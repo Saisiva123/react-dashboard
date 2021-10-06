@@ -9,6 +9,7 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Fade from "@mui/material/Fade";
+import {useHistory} from 'react-router-dom';
 
 function Navbar() {
   const headers = [
@@ -21,10 +22,12 @@ function Navbar() {
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  const history = useHistory();
 
   function logOut() {
     dispatch(loggedOut());
     handleClose();
+    history.push('/')
   }
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);

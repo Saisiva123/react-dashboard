@@ -8,7 +8,7 @@ function AuthRoute({ component: Component, props }) {
     <Route
       {...props}
       render={() =>
-        !userStore.userDetails.name ? <Component {...props} /> : <Redirect to="/home" />
+        !userStore.userDetails.name ? <Component {...props} /> : <Redirect to="/overview" />
       }
     ></Route>
   );

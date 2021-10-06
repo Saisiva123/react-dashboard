@@ -3,6 +3,8 @@ import "./Auth.css";
 import { useForm } from "react-hook-form";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import {loggedIn} from '../../store/actions/user-action.js'
+import {useDispatch} from 'react-redux';
 
 function SignIn() {
   const {
@@ -10,10 +12,11 @@ function SignIn() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  const dispatch = useDispatch();
 
   function signedIn(data) {
     console.log(data);
+    dispatch(loggedIn({name:data.username}))
   }
 
   return (

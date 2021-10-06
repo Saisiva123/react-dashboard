@@ -1,6 +1,6 @@
 let initialState = {
   userLoggedIn: false,
-  userDetails: {name:'siva'},
+  userDetails: {name:''},
 };
 
 const UserLoggedReducer = (state = initialState, action) => {
