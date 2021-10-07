@@ -39,10 +39,10 @@ function Navbar() {
   return (
     <div className="navbar px-10 flex items-center justify-between gap-36">
       <img src={companyLogo} alt="logo" />
-      <div className="navItemSec flex items-center justify-between gap-12 text-sm font-semibold">
+      <div className="navItemSec flex items-center justify-between gap-12 text-sm font-medium">
         {headers.map((item, index) => {
           return (
-            <p className="tracking-widest cursor-pointer" key={index}>
+            <p className="tracking-wider cursor-pointer" key={index}>
               {item}
             </p>
           );
