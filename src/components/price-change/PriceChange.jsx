@@ -3,7 +3,7 @@ import React from 'react'
 function PriceChange() {
     return (
         <div>
-            <p>chaneg in proec</p>
+            <p>Price Change</p>
         </div>
     )
 }

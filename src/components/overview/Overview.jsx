@@ -1,19 +1,13 @@
 import React from "react";
-import Navbar from "../navbar/Navbar";
-import Filters from "../filters/Filters";
-import Kpis from "../kpis/Kpis";
+import "./Overview.css";
 import ProductAvailability from "../product-availability/ProductAvailability";
 import PriceChange from "../price-change/PriceChange";
 import { Switch, Route } from "react-router-dom";
 import { RoutePaths } from "../../config/RouteConstants";
 
-function Home() {
+function Overview() {
   return (
-    <div>
-      <Navbar />
-      <Filters />
-      <Kpis />
-         
+    <div className = 'overview'>
       <Switch>
         <Route
           exact
@@ -26,4 +20,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Overview;

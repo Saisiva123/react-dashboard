@@ -3,7 +3,7 @@ import React from 'react'
 function ProductAvailability() {
     return (
         <div>
-            <p>procjnsdjvan ds svsv sdv</p>
+            <p>Product Availability</p>
         </div>
     )
 }

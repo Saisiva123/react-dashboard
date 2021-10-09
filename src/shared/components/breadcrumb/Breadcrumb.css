@@ -1,0 +1,10 @@
+.breadcrumb
+{
+    width: 100%;
+    background: white;
+   box-shadow: 3px 4px 12px lightgrey
+}
+.highlight
+{
+    color: var(--highlight-txt-color) !important;
+}

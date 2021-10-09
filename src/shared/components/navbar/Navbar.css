@@ -1,0 +1,39 @@
+.navbar
+{
+    width: 100%;
+    height: 50px;
+    background: var(--header-bg-color);
+}
+.navbar img
+{
+    width:100px
+}
+.navbar .actNavItem
+{
+    color: var(--highlight-txt-color);
+    border-bottom: 2px solid var(--highlight-txt-color);
+}
+.navbar a
+{
+    padding: 12px 0px;
+}
+.user
+{
+    max-width: 100px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.navbar .MuiButton-root
+{
+    color: darkslategrey;
+}
+.navbar .accIcon
+{
+    font-size: 19px;
+}
+
+.navbar .arrow
+{
+    color: var(--arrow-color) !important;
+}

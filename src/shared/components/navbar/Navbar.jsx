@@ -1,29 +1,46 @@
 import React, { useState } from "react";
 import "./Navbar.css";
-import companyLogo from "../../assets/icons/logo.png";
+import companyLogo from "../../../assets/icons/logo.png";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useSelector, useDispatch } from "react-redux";
-import { loggedOut } from "../../store/actions/user-action";
+import { loggedOut } from "../../../store/actions/user-action";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Fade from "@mui/material/Fade";
-import {useHistory} from 'react-router-dom';
+import {NavLink, useHistory} from 'react-router-dom';
+import { RoutePaths } from "../../../config/RouteConstants";
 
-function Navbar() {
+function Navbar(props) {
   const headers = [
-    "Overview",
-    "Competitor Analysis",
-    "Brand Registry",
-    "Compliances",
+   { name:"Overview",
+     path:RoutePaths.overview.path
+  },
+  {
+    name:"Competitor Analysis",
+    path:RoutePaths.analysis.path
+  },
+  {
+    name:"Brand Registry",
+    path:'/registry'
+  },
+  {
+    name:"Compliances",
+    path:'/compliance'
+  }
   ];
   const stateSelector = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const history = useHistory();
-
+  const {getRoute} = props;
+  
+  function getCurrentRoute(path)
+  {
+    getRoute(path)
+  }
   function logOut() {
     dispatch(loggedOut());
     handleClose();
@@ -42,9 +59,9 @@ function Navbar() {
       <div className="navItemSec flex items-center justify-between gap-12 text-sm font-medium">
         {headers.map((item, index) => {
           return (
-            <p className="tracking-wider cursor-pointer" key={index}>
-              {item}
-            </p>
+            <NavLink to={{pathname:item.path,state:{breadcrumbItem:item.name}}} className="tracking-wider cursor-pointer" key={index} activeClassName="actNavItem" onClick={()=>getCurrentRoute(item.path)}>
+              {item.name}
+            </NavLink>
           );
         })}
       </div>
@@ -56,11 +73,11 @@ function Navbar() {
           aria-expanded={open ? "true" : undefined}
           onClick={handleClick}
         >
-          <AccountCircleIcon />
-          <p className="text-sm font-normal px-2">
+          <AccountCircleIcon className="accIcon" />
+          <p className="text-sm font-normal px-2 user">
             {stateSelector.userDetails.name}
           </p>
-          <KeyboardArrowDownIcon />
+          <KeyboardArrowDownIcon className="arrow"/>
         </Button>
         <Menu
           id="fade-menu"

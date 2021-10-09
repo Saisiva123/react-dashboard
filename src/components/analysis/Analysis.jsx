@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Kpis() {
+function Analysis() {
     return (
         <div>
-            
+            <p>analysis</p>
         </div>
     )
 }
 
-export default Kpis
+export default Analysis

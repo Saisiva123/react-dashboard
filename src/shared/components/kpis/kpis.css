@@ -1,0 +1,41 @@
+.kpis
+{
+  border-bottom:2px solid #b8c9d14f;
+  background: white;
+  box-shadow: 0px ​6px 3px lightgrey;
+}
+.kpi {
+  border: 1px solid rgb(239, 235, 235);
+  max-width: 300px;
+  min-width: 170px;
+  flex: 1;
+  border-right: none;
+}
+.activekpi {
+  border:  2px solid var(--light-chart-color);
+  /* box-shadow: 0px 0px 7px rgb(30 68 84); */
+  /* border-top-color: 3px solid rgb(74 145 175) !important; */
+}
+.noData {
+  margin-top: 8px;
+  margin-left: 10px;
+  text-transform: capitalize;
+}
+.noData::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -13px;
+  width: 8px;
+  height: 8px;
+  background: grey;
+  border-radius: 50%;
+}
+.btmTxt
+{
+  padding: 7px 0px 0px 8px;
+  box-sizing: border-box;
+  color: grey;
+  margin-top: 13px;
+  border-top: 1px solid #ededed;
+}
