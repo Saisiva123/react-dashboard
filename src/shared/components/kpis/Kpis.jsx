@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./kpis.css";
 import { useHistory } from "react-router-dom";
+import { RoutePaths } from "../../../config/RouteConstants";
 
 function Kpis() {
   const kpisData = [
@@ -45,17 +46,23 @@ function Kpis() {
 
   var [kpisList, setkpi] = useState(kpisData);
 
+  useEffect(() => {
+    kpisData[0].active = true;
+  }, [])
+
   function selectedKpi(item,index) {
     kpisList.map((item) => {
       item.active = false;
     });
     kpisList[index].active = true;
     setkpi([...kpisList]);
-    history.push({pathname:`/dashboard/overview/${item.name}`,state:{breadcrumbItem:item.name}})
+    history.push({pathname:`${RoutePaths.overview.path}/${item.name}`,state:[  {breadcrumb:'Dashboard'},
+    {breadcrumb:'Overview'},
+    {breadcrumb:item.name}]})
   }
 
   return (
-    <div className="flex items-center justify-around kpis">
+    <div className="flex items-center justify-around kpis px-2 mt-1 mb-1">
       {console.log(kpisList)}
       {kpisList.map((item, index) => {
         return (

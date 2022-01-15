@@ -19,7 +19,8 @@
 }
 .user
 {
-    max-width: 100px;
+    max-width: 150px;
+    width: auto;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;

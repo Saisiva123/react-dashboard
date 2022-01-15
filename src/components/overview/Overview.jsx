@@ -1,20 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Overview.css";
 import ProductAvailability from "../product-availability/ProductAvailability";
 import PriceChange from "../price-change/PriceChange";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useHistory } from "react-router-dom";
 import { RoutePaths } from "../../config/RouteConstants";
 
 function Overview() {
+  const history = useHistory();
+
+  useEffect(() => {
+    console.log("overview loaded")
+    history.push( RoutePaths.productAvailability.path);
+  }, []);
   return (
-    <div className = 'overview'>
+    <div className="overview">
       <Switch>
         <Route
           exact
-          path={ RoutePaths.overview.children.productAvailability.path}
+          path={RoutePaths.productAvailability.path}
           component={ProductAvailability}
         />
-        <Route exact path={ RoutePaths.overview.children.priceChange.path} component={PriceChange} />
+        <Route
+          exact
+          path={RoutePaths.priceChange.path}
+          component={PriceChange}
+        />
       </Switch>
     </div>
   );

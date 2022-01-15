@@ -44,6 +44,7 @@ function Navbar(props) {
   function logOut() {
     dispatch(loggedOut());
     handleClose();
+    localStorage.clear()
     history.push('/')
   }
   const handleClick = (event) => {
@@ -75,7 +76,7 @@ function Navbar(props) {
         >
           <AccountCircleIcon className="accIcon" />
           <p className="text-sm font-normal px-2 user">
-            {stateSelector.userDetails.name}
+            {stateSelector.userDetails.name ||    localStorage.getItem('user')}
           </p>
           <KeyboardArrowDownIcon className="arrow"/>
         </Button>

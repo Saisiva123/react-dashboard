@@ -16,6 +16,7 @@ function SignIn() {
 
   function signedIn(data) {
     console.log(data);
+    localStorage.setItem("user",data.username)
     dispatch(loggedIn({name:data.username}))
   }
 

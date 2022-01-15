@@ -1,30 +1,37 @@
 import "./App.css";
 import "./index.css";
+import { lazy, Suspense } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+import AuthRoute from "./shared/protectedRoutes/AuthRoute";
+import NoAuthRoute from "./shared/protectedRoutes/NoAuthRoute";
 import SignIn from "./components/authentication/SignIn";
 import SignUp from "./components/authentication/SignUp";
-import Overview from "./components/overview/Overview";
-import { BrowserRouter as Router, Switch, Route, useLocation } from "react-router-dom";
-import AuthRoute from "./protectedRoutes/AuthRoute";
-import {RoutePaths} from "./config/RouteConstants";
-import Analysis from "./components/analysis/Analysis";
-import  Dashboard  from "./components/dashboard/Dashboard";
+import { RoutePaths } from "./config/RouteConstants";
+import Loader from "./shared/components/loader/Loader";
+const Dashboard = lazy(() => import("./components/dashboard/Dashboard"));
+
 function App() {
-
   return (
-   
-    // if we want any context provider we can wrap all these components inside that
-    <div className='app'>
+    //Protected route gurards better to be individula insted of wrapping all commponents inside it because we need to specify for which route this protected route should work
+    <div className="app">
       <Router>
-        <Switch>
-          <AuthRoute exact path="/" component={SignIn} />
-          <AuthRoute exact path="/signUp" component={SignUp}/>
-          {/*  TODO:ADD PROTECTED ROUTE */}
-          {/* <Route path={RoutePaths.overview.path} component={Overview}/>
-          <Route path={RoutePaths.analysis.path} component={Analysis}/> */}
-          <Route path="/dashboard"  component = {Dashboard}/>
-          <Route path="*" component={()=>('cannot find page')}/>
+        <Suspense fallback={<Loader />}>
+          <Switch>
+            <Redirect exact path="/" to={RoutePaths.signIn.path} />
 
-        </Switch>
+            <NoAuthRoute path={RoutePaths.signIn.path} component={SignIn} />
+            <NoAuthRoute path={RoutePaths.signUp.path} component={SignUp} />
+
+            <AuthRoute path={RoutePaths.dashboard.path} component={Dashboard} />
+
+            <Route path="*" component={() => "cannot find page"} />
+          </Switch>
+        </Suspense>
       </Router>
     </div>
   );

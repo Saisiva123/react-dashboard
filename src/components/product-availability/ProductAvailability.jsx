@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import "./ProductAvailability.css";
 
 function ProductAvailability() {
+
+
     return (
-        <div>
+        <div className = "prodAvail">
             <p>Product Availability</p>
         </div>
     )
