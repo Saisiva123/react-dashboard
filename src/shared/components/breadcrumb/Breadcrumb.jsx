@@ -15,7 +15,7 @@ function Breadcrumb() {
 
   useEffect(() => {
     let allpaths = location.pathname.split("/");
-    console.log(allpaths);
+    console.log(location);
     setBreadcrumbs(allpaths.slice(1, allpaths.length));
   }, [location]);
 

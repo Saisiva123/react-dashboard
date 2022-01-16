@@ -47,7 +47,7 @@ function Kpis() {
   var [kpisList, setkpi] = useState(kpisData);
 
   useEffect(() => {
-    kpisData[0].active = true;
+    selectedKpi(kpisData[0],0)
   }, [])
 
   function selectedKpi(item,index) {
@@ -63,7 +63,6 @@ function Kpis() {
 
   return (
     <div className="flex items-center justify-around kpis px-2 mt-1 mb-1">
-      {console.log(kpisList)}
       {kpisList.map((item, index) => {
         return (
           <div

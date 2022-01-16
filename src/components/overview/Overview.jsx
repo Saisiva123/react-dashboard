@@ -2,16 +2,20 @@ import React, { useEffect } from "react";
 import "./Overview.css";
 import ProductAvailability from "../product-availability/ProductAvailability";
 import PriceChange from "../price-change/PriceChange";
-import { Switch, Route, useHistory } from "react-router-dom";
+import { Switch, Route, useHistory, useLocation } from "react-router-dom";
 import { RoutePaths } from "../../config/RouteConstants";
 
 function Overview() {
   const history = useHistory();
+  // const location = useLocation();
 
   useEffect(() => {
-    console.log("overview loaded")
-    history.push( RoutePaths.productAvailability.path);
+    console.log("overview loaded");
+    setTimeout(() => {
+      history.push(RoutePaths.productAvailability.path);
+    }, 100);
   }, []);
+
   return (
     <div className="overview">
       <Switch>

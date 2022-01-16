@@ -55,7 +55,7 @@ function Navbar(props) {
   };
 
   return (
-    <div className="navbar px-10 flex items-center justify-between gap-36">
+    <div className="navbar px-2 flex items-center justify-between gap-36">
       <img src={companyLogo} alt="logo" />
       <div className="navItemSec flex items-center justify-between gap-12 text-sm font-medium">
         {headers.map((item, index) => {
@@ -76,7 +76,7 @@ function Navbar(props) {
         >
           <AccountCircleIcon className="accIcon" />
           <p className="text-sm font-normal px-2 user">
-            {stateSelector.userDetails.name ||    localStorage.getItem('user')}
+            {stateSelector.userDetails.name}
           </p>
           <KeyboardArrowDownIcon className="arrow"/>
         </Button>

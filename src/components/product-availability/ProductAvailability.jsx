@@ -1,8 +1,12 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import "./ProductAvailability.css";
 
 function ProductAvailability() {
 
+    useEffect(() => {
+        console.log("product availability loaded")
+       
+    }, [])
 
     return (
         <div className = "prodAvail">

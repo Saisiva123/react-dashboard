@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Auth.css";
 import { useForm } from "react-hook-form";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import {loggedIn} from '../../store/actions/user-action.js'
-import {useDispatch} from 'react-redux';
-
+import { loggedIn } from "../../store/actions/user-action.js";
+import { useDispatch } from "react-redux";
+import useFetch from "../../apis/useFetch";
+import CircularProgress from "@mui/material/CircularProgress";
+import {RoutePaths} from "../../config/RouteConstants"
+import { useHistory } from "react-router-dom";
 function SignIn() {
   const {
     register,
@@ -13,12 +16,25 @@ function SignIn() {
     formState: { errors },
   } = useForm();
   const dispatch = useDispatch();
+  const history = useHistory();
+  const { response, loading, fetchApi } = useFetch();
 
   function signedIn(data) {
-    console.log(data);
-    localStorage.setItem("user",data.username)
-    dispatch(loggedIn({name:data.username}))
+    fetchApi({
+      url: "/login",
+      method: "post",
+      body: { email: data.username, password: data.password },
+    });
   }
+
+  useEffect(() => {
+    if (response) {
+      let { firstName, lastName, token } = response;
+      localStorage.setItem("userToken", token);
+      history.push(RoutePaths.dashboard.path)
+      // dispatch(loggedIn({ name: firstName + lastName }));
+    }
+  }, [response]);
 
   return (
     <div className="signIn">
@@ -49,7 +65,7 @@ function SignIn() {
           className="float-right btn"
           onClick={handleSubmit(signedIn)}
         >
-          Submit
+          {loading ? <CircularProgress className="loading" /> : "Submit"}
         </Button>
       </form>
     </div>

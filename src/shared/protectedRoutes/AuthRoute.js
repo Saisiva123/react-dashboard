@@ -10,7 +10,7 @@ function AuthRoute({ component : Component, props }) {
     <Route
       {...props}
       render={() =>
-        localStorage.getItem("user") ? (
+        localStorage.getItem("userToken") ? (
           <Component {...props} />
         ) : (
           <Redirect to={{ pathname: RoutePaths.signIn.path }} />
